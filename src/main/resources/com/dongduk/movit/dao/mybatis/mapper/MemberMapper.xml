@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+       Copyright 2010-2013 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dongduk.movit.dao.mybatis.mapper.MemberMapper">
+
+  <cache />
+
+  <select id="getMemberByUsernameAndPassword" resultType="Member" parameterType="String">
+    SELECT
+    	MEMBERIDX, M_ID, M_PW, M_NAME, M_RATEAVG, M_COMMONRATE, M_TOTALRATE, M_TOTALTIME
+    FROM MEMBER
+    WHERE M_ID = #{m_id}
+    	AND M_PW = #{m_pw}
+  </select>
+  
+  <insert id="insertMember" parameterType="Member">
+  	<selectKey keyProperty="memberIdx" resultType="int" order="BEFORE" >
+  		SELECT MEMBER_SEQ.NEXTVAL AS MEMBERIDX FROM DUAL
+  	</selectKey>
+    INSERT INTO MEMBER
+      ( MEMBERIDX, M_ID, M_PW, M_NAME, M_RATEAVG, M_COMMONRATE, M_TOTALRATE, M_TOTALTIME)
+    VALUES
+      (#{memberIdx}, #{m_id}, #{m_pw}, #{m_name}, 
+      #{m_rateAvg,jdbcType=FLOAT}, #{m_commonRate,jdbcType=FLOAT}, #{m_totalRate,jdbcType=FLOAT},
+       #{m_totalTime,jdbcType=INTEGER})
+  </insert>
+  
+  <insert id="insertMovie" parameterType="Movie">
+  	<selectKey keyProperty="movieIdx" resultType="int" order="BEFORE" >
+  		SELECT MOVIE_SEQ.NEXTVAL AS MOVIE IDX FROM DUAL
+  	</selectKey>
+    INSERT INTO MOVIE
+      ( MOVIEIDX, TITLE, GENRE, DIRECTOR, NATION, IMG, RUNTIME )
+    VALUES
+      (#{movieIdx}, #{title}, #{genre}, #{director}, 
+      #{nation}, #{img}, #{runtime})
+  </insert>
+<!-- 
+  <select id="getUsernameList" resultType="java.lang.String">
+    SELECT USERNAME AS VALUE FROM SIGNON
+  </select>
+
+  <update id="updateAccount" parameterType="Account">
+    UPDATE ACCOUNT SET
+      EMAIL = #{email},
+      FIRSTNAME = #{firstName},
+      LASTNAME = #{lastName},
+      STATUS = #{status},
+      ADDR1 = #{address1},
+      ADDR2 = #{address2,jdbcType=VARCHAR},
+      CITY = #{city},
+      STATE = #{state},
+      ZIP = #{zip},
+      COUNTRY = #{country},
+      PHONE = #{phone}
+    WHERE USERID = #{username}
+  </update>
+
+  
+ -->
+  <!--  
+  TODO MyBatis 3 does not map booleans to integers
+  <update id="updateProfile" parameterType="Account">
+    UPDATE PROFILE SET
+      LANGPREF = #{languagePreference},
+      FAVCATEGORY = #{favouriteCategoryId},
+      MYLISTOPT = #{listOption},
+      BANNEROPT = #{bannerOption}
+    WHERE USERID = #{username}
+  </update>
+  -->
+
+<!--   <update id="updateProfile" parameterType="Account">
+    UPDATE PROFILE SET
+      LANGPREF = #{languagePreference},
+      FAVCATEGORY = #{favouriteCategoryId}
+    WHERE USERID = #{username}
+  </update> -->
+
+  <!--  
+  TODO MyBatis 3 does not map booleans to integers
+  <insert id="insertProfile" parameterType="Account">
+    INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, MYLISTOPT, BANNEROPT, USERID)
+    VALUES (#{languagePreference}, #{favouriteCategoryId}, #{listOption}, #{bannerOption}, #{username})
+  </insert>
+  -->
+
+<!--   <insert id="insertProfile" parameterType="Account">
+    INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, USERID)
+    VALUES (#{languagePreference}, #{favouriteCategoryId}, #{username})
+  </insert>
+
+  <update id="updateSignon" parameterType="Account">
+    UPDATE SIGNON SET PASSWORD = #{password}
+    WHERE USERNAME = #{username}
+  </update>
+
+  <insert id="insertSignon" parameterType="Account">
+    INSERT INTO SIGNON (PASSWORD,USERNAME)
+    VALUES (#{password}, #{username})
+  </insert>
+ -->
+</mapper>

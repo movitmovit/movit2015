@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="base_layout"
+		template="/WEB-INF/view/tiles2/template/layout.jsp">
+		<put-attribute name="title" value="Movit " type="string"/>
+		<put-attribute name="header"
+			value="/WEB-INF/view/tiles2/IncludeTop.jsp" />
+		<put-attribute name="user"
+			value="/WEB-INF/view/tiles2/IncludeUser.jsp" />	
+	 	<put-attribute name="menu"
+			value="/WEB-INF/view/tiles2/IncludeMenu.jsp" />
+		<!-- <put-attribute name="banner" value="" /> --> 
+	</definition>
+
+	<definition name="main" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/main.jsp" />
+	</definition>
+	
+	<definition name="main2" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/main.jsp" />
+	</definition>
+	
+	<definition name="MvStorage" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/MvStorage.jsp" />
+	</definition>
+	
+	<definition name="RecommandMv" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/RecommandMv.jsp" />
+	</definition>
+	
+	<definition name="Wishlist" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/Wishlist.jsp" />
+	</definition>
+	
+	<definition name="Mypage" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/Mypage.jsp" />
+	</definition>
+	
+	<definition name="detail" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/detail.jsp" />
+	</definition>
+	
+	<definition name="afterRatingDetail" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/afterRatingDetail.jsp" />
+	</definition>
+	
+	<!-- 6.6 새로 추가 -->
+	
+	<definition name="MvStorage" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/MvStorage.jsp" />
+	</definition>
+	
+	<definition name="afterAddWishDetail" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/afterAddWishDetail.jsp"/>
+	</definition>
+	
+	
+<!--  	
+	<definition name="Mypage" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/ㅇ.jsp" />
+	</definition>
+	
+	<definition name="Mypage" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/ㅇ.jsp" />
+	</definition>
+	
+	<definition name="Mypage" extends="base_layout">
+		<put-attribute name="body"
+			value="/WEB-INF/view/tiles2/ㅇ.jsp" />
+	</definition>
+-->
+</tiles-definitions>
